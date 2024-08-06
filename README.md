@@ -5,7 +5,7 @@ contains code accompanying the paper: Schuh et al., (2024) medRxiv, https://doi.
 Lea Schuh<sup>1,\*</sup>, Peter V. Markov<sup>1,2</sup>, Ioanna Voulgaridi<sup>3</sup>, Zacharoula Bogogiannidou<sup>3</sup>, Varvara A. Mouchtouri<sup>3</sup>, Christos Hadjichristodoulou<sup>3</sup>, Nikolaos I. Stilianakis<sup>1,4,\*</sup> \
 <sup>1</sup> Joint Research Centre (JRC), European Commission, Ispra, Italy \
 <sup>2</sup> London School of Hygiene & Tropical Medicine, University of London, London, United Kingdom \
-<sup>3</sup> Laboratory of Hygiene and Epidemiology, University of Thessaly, Larissa, Greece 
+<sup>3</sup> Laboratory of Hygiene and Epidemiology, University of Thessaly, Larissa, Greece \
 <sup>4</sup> Department of Biometry and Epidemiology, University of Erlangen–Nuremberg, Erlangen, Germany \
 <sup>\*</sup> corresponding authors \
 \

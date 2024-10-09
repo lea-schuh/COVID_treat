@@ -424,6 +424,11 @@ x = norminv([0.025 0.975]);
 
 for i_par = 1:size(Stat,1)
     B = binornd(89,sum(Stat(i_par,Inds{1})==0)./length(Stat(i_par,Inds{1})),10000,1)./89;
+    if cdf('Normal',sum(Stat(i_par,Inds{2})==0)/length(Stat(i_par,Inds{2})),mean(B),std(B)) <= 0.5
+        dec_p(i_par) = 2*cdf('Normal',sum(Stat(i_par,Inds{2})==0)/length(Stat(i_par,Inds{2})),mean(B),std(B));
+    else
+        dec_p(i_par) = 2*(1-cdf('Normal',sum(Stat(i_par,Inds{2})==0)/length(Stat(i_par,Inds{2})),mean(B),std(B)));
+    end
     UB(i_par) = mean(B)+x(2)*std(B);
     LB(i_par) = mean(B)+x(1)*std(B);
     if LB(i_par) <= sum(Stat(i_par,Inds{2})==0)/length(Stat(i_par,Inds{2})) && sum(Stat(i_par,Inds{2})==0)/length(Stat(i_par,Inds{2})) <= UB(i_par)
@@ -436,6 +441,13 @@ end
 for i_par = 2:3
     for i_check = 0:4
         B = binornd(89,sum(Stat(i_par,Inds{1})==i_check)./length(Stat(i_par,Inds{1})),10000,1)./89;
+
+        if cdf('Normal',sum(Stat(i_par,Inds{2})==i_check)/length(Stat(i_par,Inds{2})),mean(B),std(B)) <= 0.5
+            dec2_p(i_par,i_check+1) = 2*cdf('Normal',sum(Stat(i_par,Inds{2})==i_check)/length(Stat(i_par,Inds{2})),mean(B),std(B));
+        else
+            dec2_p(i_par,i_check+1) = 2*(1-cdf('Normal',sum(Stat(i_par,Inds{2})==i_check)/length(Stat(i_par,Inds{2})),mean(B),std(B)));
+        end
+
         UB= mean(B)+x(2)*std(B);
         LB= mean(B)+x(1)*std(B);
         if LB <= sum(Stat(i_par,Inds{2})==i_check)/length(Stat(i_par,Inds{2})) && sum(Stat(i_par,Inds{2})==i_check)/length(Stat(i_par,Inds{2})) <= UB
@@ -450,6 +462,13 @@ end
 for i_subset = 3:6
     for i_par = 1:size(Stat,1)
         B = binornd(length(Inds{i_subset}),sum(Stat(i_par,Inds{2})==0)./length(Stat(i_par,Inds{2})),10000,1)./length(Inds{i_subset});
+        
+        if cdf('Normal',sum(Stat(i_par,Inds{i_subset})==0)/length(Stat(i_par,Inds{i_subset})),mean(B),std(B)) <= 0.5
+            dec3_p(i_subset-2,i_par) = 2*cdf('Normal',sum(Stat(i_par,Inds{i_subset})==0)/length(Stat(i_par,Inds{i_subset})),mean(B),std(B));
+        else
+            dec3_p(i_subset-2,i_par) = 2*(1-cdf('Normal',sum(Stat(i_par,Inds{i_subset})==0)/length(Stat(i_par,Inds{i_subset})),mean(B),std(B)));
+        end
+
         UB(i_par) = mean(B)+x(2)*std(B);
         LB(i_par) = mean(B)+x(1)*std(B);
         if LB(i_par) <= sum(Stat(i_par,Inds{i_subset})==0)/length(Stat(i_par,Inds{i_subset})) && sum(Stat(i_par,Inds{i_subset})==0)/length(Stat(i_par,Inds{i_subset})) <= UB(i_par)
@@ -465,6 +484,13 @@ for i_subset = 3:6
     for i_par = 2:3
         for i_check = 0:4
             B = binornd(length(Inds{i_subset}),sum(Stat(i_par,Inds{2})==i_check)./length(Stat(i_par,Inds{2})),10000,1)./length(Inds{i_subset});
+            
+            if cdf('Normal',sum(Stat(i_par,Inds{i_subset})==i_check)/length(Stat(i_par,Inds{i_subset})) ,mean(B),std(B)) <= 0.5
+                dec4_p(i_par,i_check+1) = 2*cdf('Normal',sum(Stat(i_par,Inds{i_subset})==i_check)/length(Stat(i_par,Inds{i_subset})) ,mean(B),std(B));
+            else
+                dec4_p(i_par,i_check+1) = 2*(1-cdf('Normal',sum(Stat(i_par,Inds{i_subset})==i_check)/length(Stat(i_par,Inds{i_subset})) ,mean(B),std(B)));
+            end
+            
             UB= mean(B)+x(2)*std(B);
             LB= mean(B)+x(1)*std(B);
             if LB <= sum(Stat(i_par,Inds{i_subset})==i_check)/length(Stat(i_par,Inds{i_subset})) && sum(Stat(i_par,Inds{i_subset})==i_check)/length(Stat(i_par,Inds{i_subset})) <= UB
@@ -474,7 +500,7 @@ for i_subset = 3:6
             end
         end
     end
-    dec4
+    dec4_p
 end
 
 
